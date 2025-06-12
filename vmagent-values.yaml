@@ -1,0 +1,14 @@
+serviceScrapeSelector: {}
+serviceScrapeNamespaceSelector: {}
+remoteWrite:
+  - url: http://vm-single-victoria-metrics-single-server.default.svc.cluster.local:8428/api/v1/write
+
+extraScrapeConfigs:
+  - job_name: simple-api
+    metrics_path: /actuator/prometheus
+    scrape_interval: 30s
+    static_configs:
+      - targets:
+          - simple-api-svc.default.svc.cluster.local:80
+        labels:
+          job: simple-api

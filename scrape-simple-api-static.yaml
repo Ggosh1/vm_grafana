@@ -1,0 +1,20 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMStaticScrape
+metadata:
+  name: scrape-simple-api-static
+  # (при желании сюда можно добавить метки, 
+  #  чтобы в agent-е фильтровать по селектору)
+spec:
+  # jobName будет подставляться в label `job=...`
+  jobName: simple-api-static
+
+  # описываем список энпоинтов
+  targetEndpoints:
+    - targets:
+        # обязательно указываем порт, т.к. у вас порт 80 в Svc
+        - simple-api-svc.default.svc.cluster.local:80
+
+      # эти labels повесит на каждую метрику,
+      # можно добавить свои или не указывать вовсе
+      labels:
+        app: simple-api

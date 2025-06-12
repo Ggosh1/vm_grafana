@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vmagent-svc
+spec:
+  selector:
+    app.kubernetes.io/name: victoria-metrics-agent
+  ports:
+  - port: 8429
+    targetPort: 8429
+    name: metrics

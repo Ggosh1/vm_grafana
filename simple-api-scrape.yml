@@ -1,0 +1,8 @@
+- job_name: simple-api
+  metrics_path: /actuator/prometheus
+  scrape_interval: 30s
+  static_configs:
+    - targets:
+        - simple-api-svc.default.svc.cluster.local:80
+      labels:
+        job: simple-api

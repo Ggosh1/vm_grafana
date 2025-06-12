@@ -1,0 +1,12 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: scrape-simple-api
+spec:
+  selector:
+    matchLabels:
+      app: simple-api
+  endpoints:
+    - port: "metrics"
+      path: /actuator/prometheus
+      interval: 30s

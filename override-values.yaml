@@ -1,0 +1,14 @@
+# override-values.yaml
+extraScrapeConfigs: []
+
+serviceScrapeSelector:
+  matchLabels:
+    app.kubernetes.io/instance: vm-agent
+
+serviceScrapeNamespaceSelector:
+  matchNames:
+    - default
+    - ingress-nginx
+
+remoteWrite:
+  - url: "http://vm-single-victoria-metrics-single-server.default.svc.cluster.local:8428/api/v1/write"

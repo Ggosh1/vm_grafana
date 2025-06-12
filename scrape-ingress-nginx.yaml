@@ -1,0 +1,16 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: scrape-ingress-nginx
+  namespace: ingress-nginx
+spec:
+  namespaceSelector:
+    matchNames:
+      - ingress-nginx
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ingress-nginx
+  endpoints:
+    - port: "10254"
+      path: /metrics
+      interval: 30s
